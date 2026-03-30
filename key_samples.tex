@@ -169,7 +169,29 @@ for some polynomial $U \in \mathbb{R}[X]$.
 Fortunately, the probability that the keys lie in a low-dimensional space when they are sampled uniformly at random and independently is very low, since
 \[
 \Pr\bigl[\dim(\mathrm{span}(k_1, k_2, \dots, k_n)) = d \bigr]
-= \prod_{i=0}^{d-1} \frac{(q^m - q^i)(q^n - q^i)}{q^d - q^i}/{q^{nm}}.
+= \frac{\prod_{i=0}^{d-1} \frac{(q^m - q^i)(q^n - q^i)}{q^d - q^i}}{q^{mn}}.
 \]
+
+\section{Freshman Dream}
+
+In this section, we remark that no nontrivial ring $R$ exists such that for all $a,b,c,d \in R$, the equality
+\[
+(a+b)(c+d) = ac + bd
+\]
+holds.
+
+To see this, suppose such a ring exists. Let $a \in R$, and denote by $0$ and $1$ the additive and multiplicative identities of $R$, respectively.
+
+On the one hand, using the assumed property, we have
+\[
+(a+0)(1+0) = a \cdot 1 = a.
+\]
+
+On the other hand, using the assumed property and commutativity of addition, we get
+\[
+(a+0)(1+0) = (0+a)(1+0) = 0 \cdot 1 + a \cdot 0 = 0 + 0 = 0.
+\]
+
+Hence, $a = 0$ for all $a \in R$, which means that $R$ is the zero ring. Therefore, no nontrivial ring satisfies the given property.
 
 \end{document}
