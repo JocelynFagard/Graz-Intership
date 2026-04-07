@@ -259,6 +259,36 @@ has degree exactly $p-1$.
 \hfill $\square$
 
 \vspace{0.3cm}
+\textbf{Lemma.}
+
+When $p$ goes to infinity, all permutation polynomials of $\mathbb{Z}_p$ have degree $p-2$ in the sens that :
+
+\[
+\lim_{p \to \infty} \frac{N(p, p-1)}{p!} = 1.
+\]
+
+\textbf{Proof.}
+Again, given a permutation $\sigma$ of $\mathbb{Z}_p$ using Lagrange interpolation formula, we have that the coefficient in front of the monome of degree $p-2$ is :
+
+\[
+- \sum_{i=0}^{p-1} \sigma(i) (\sum_{j \neq i} (-j)) = -\sum_{i=0}^{p-1} \sigma(i)\cdot i = -<id, \sigma>
+\] 
+
+where $<\cdot,\cdot>$ denotes the scalar product, $id = (0,1,\cdots,p-1)$ and $\sigma = (\sigma(0),\sigma(1),\cdots, \sigma(p-1))$. Hence $\sigma$ has degree $p-2$ if and only if it is not orthogonal to $id$.
+\vspace{0.3cm}
+
+Given $j \in \mathbb{Z}_p$ we define, $A_j :=\{\tau \text{ permutation} \mid <\tau, id> = j \}$ and $a_j:=\#A_j$. We first claim that $\forall i \neq j \in \mathbb{Z}_p^*$ , $a_i=a_j$ by remarking that $\forall \tau$ such that $<\tau,id> \neq 0$ there is exactly one permutation among the non zero co-linear permutations $\{ \lambda \cdot\tau \mid \lambda \in \mathbb{Z}_p^*\}$ in every $A_j$ for $j\neq0$.  
+We denote this common value of these $a_i$'s with $i\neq 0$ by $b$.
+
+\vspace{0.3cm}
+
+Secondly, let's note $f: \tau \to (\tau(1),\tau(0),\tau(2),\tau(3),\cdots,\tau(p-1))$ the application that swaps the first two values of a permutation. Then we remark $<f(\tau), id> = <\tau,id> + (\tau(0) - \tau(1)) \neq <\tau,id>$. So, each element of $A_i$ is associated to an element wich is not in is group. In particular we must have $a_0 \leq (p-1)b$.
+
+\vspace{0.3cm}
+
+Now to conclude we see that $p!=a_0 + (p-1)b \leq (p-1)(b+1)$ that is $\frac{b}{p!} \geq \frac{1}{p-1} - \frac{1}{p!}$. Moreover, we have simply $(p-1)b\leq p!$ that is $\frac{b}{p!}\leq \frac{1}{p-1}$.
+
+And so we have $b \sim \ \frac{1}{p-1}$. Noting that the number of permutation of degree $p-2$ is $(p-1)b$ we get $\frac{(p-1)b}{p!} \sim 1$.
 
 \textbf{Proposition.}
 
