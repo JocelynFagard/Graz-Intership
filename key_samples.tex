@@ -4,7 +4,6 @@
 \usepackage{float}
 \usepackage{xcolor}
 \usepackage{cite}
-\usepackage{appendixnumberbeamer}
 \usepackage{graphicx} 
 \usepackage{amsmath}
 \usepackage{amssymb}
@@ -261,17 +260,19 @@ has degree exactly $p-1$.
 \vspace{0.3cm}
 \textbf{Lemma.}
 
-When $p$ goes to infinity, all permutation polynomials of $\mathbb{Z}_p$ have degree $p-2$ in the sens that :
+Let $p \geq 3$, we have:
 
 \[
-\lim_{p \to \infty} \frac{N(p, p-1)}{p!} = 1.
+\frac{1}{2} \leq\frac{N(p, p-2)}{p!} \leq 1.
 \]
 
+That is at least half of polynomial permutations have degree $p-2$.
+
 \textbf{Proof.}
-Again, given a permutation $\sigma$ of $\mathbb{Z}_p$ using Lagrange interpolation formula, we have that the coefficient in front of the monome of degree $p-2$ is :
+Again, given a permutation $\sigma$ of $\mathbb{Z}_p$ using Lagrange interpolation formula, we have that the coefficient in front of the monom of degree $p-2$ is :
 
 \[
-- \sum_{i=0}^{p-1} \sigma(i) (\sum_{j \neq i} (-j)) = -\sum_{i=0}^{p-1} \sigma(i)\cdot i = -<id, \sigma>
+- \sum_{i=0}^{p-1} \sigma(i) (\sum_{j \neq i} (-j)) = \sum_{i=0}^{p-1} \sigma(i)\cdot i = <id, \sigma>
 \] 
 
 where $<\cdot,\cdot>$ denotes the scalar product, $id = (0,1,\cdots,p-1)$ and $\sigma = (\sigma(0),\sigma(1),\cdots, \sigma(p-1))$. Hence $\sigma$ has degree $p-2$ if and only if it is not orthogonal to $id$.
@@ -282,13 +283,14 @@ We denote this common value of these $a_i$'s with $i\neq 0$ by $b$.
 
 \vspace{0.3cm}
 
-Secondly, let's note $f: \tau \to (\tau(1),\tau(0),\tau(2),\tau(3),\cdots,\tau(p-1))$ the application that swaps the first two values of a permutation. Then we remark $<f(\tau), id> = <\tau,id> + (\tau(0) - \tau(1)) \neq <\tau,id>$. So, each element of $A_i$ is associated to an element wich is not in is group. In particular we must have $a_0 \leq (p-1)b$.
+Secondly, let's note $f_{i,j}: \tau \to (\tau_i,\tau_j) \tau$ the application that switches the i-th and the j-th values. Then we remark $<f_{i,j}(\tau), id> = <\tau,id> + (\tau(j) - \tau(i))(i-j) \neq <\tau,id>$ for $\tau$ a permutation. So, each element of some $A_l$ is associated to an element which is not in $A_l$. 
+\vspace{0.3cm}
+
+Now, we consider the graph where the vertices are the permutations and there is an edge between two permutations if one is obtained by applying $f_{0,1}$. In this graph every vertices are in couple because $f_{0,1} \circ f_{0,1} = id$. Each of the $a_0$ vertex in $A_0$ is associated to a distinct elements among the $(p-1)b$ which are not in $A_0$. So $(p-1)b \geq a_0$. And consequently the number of permutation polynomials of degree $p-2$ which is $(p-1)b$ represents at least half of permutations.
 
 \vspace{0.3cm}
 
-Now to conclude we see that $p!=a_0 + (p-1)b \leq (p-1)(b+1)$ that is $\frac{b}{p!} \geq \frac{1}{p-1} - \frac{1}{p!}$. Moreover, we have simply $(p-1)b\leq p!$ that is $\frac{b}{p!}\leq \frac{1}{p-1}$.
-
-And so we have $b \sim \ \frac{1}{p-1}$. Noting that the number of permutation of degree $p-2$ is $(p-1)b$ we get $\frac{(p-1)b}{p!} \sim 1$.
+\hfill $\square$
 
 \textbf{Proposition.}
 
