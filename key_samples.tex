@@ -641,4 +641,70 @@ is equidistributed over $\mathbb{Z}_{q-1}$.
 
 \textbf{Proof.} The proof is similar than the one for the first lemma. \hfill $\square$
 
+\vspace{0.3cm}
+Now we are interested in looking at the second part of the SPRING where our vector $y:=g^{Kc+k_0}$ that we hope to be uniformly distributed over $(\mathbb{F}_q^*)^n$ will be multiplied by the matrix $V \in (\mathbb{F}_q^*)^{n \times n}$.
+
+\vspace{0.3cm}
+
+\textbf{Proposition.}
+Let $n \geq 1$, let $v \in (\mathbb{F}_q^*)^n$, and consider the linear form $<v,\cdot>$ on $(\mathbb{F}_q)^n$ restricted to $(\mathbb{F}_q^*)^n$. For any $i \in \mathbb{F}_q$ we denote:
+\[
+a_i:= \#\{x \in (\mathbb{F}_q^*)^n \mid <v,x>=i\}.
+\]
+
+Then for all $i,j \neq 0$, $a_i = a_j=:b$ and we have $a_0 - b = (-1)^n$. That is the restriction of the linear form $v$ to $(\mathbb{F}_q^*)^n$ is nearly equidistributed.
+
+\vspace{0.3cm}
+
+\textbf{Proof.}
+Firstly in each line $\mathbb{F}_q^* \cdot x$ with $x \in (\mathbb{F}_q^*)^n$ not orthogonal to $v$ ($<v,x> \neq 0$), there is exactly one vector that contributes to the $a_i$ $i\neq0$. Hence for all $i, j \neq 0$, $a_i = a_j =:b$.
+
+\vspace{0.3cm}
+
+So as to make some induction we note $x_n:=a_0$ and $y_n:=b$. Now we take $v_{n+1} \in \mathbb{F}_q^*$ so as to complete $v$, and by writing: $\forall y:=(x,x_{n+1})=(x_1,...,x_n,x_{n+1}) \in (\mathbb{F}_q^*)^{n+1}$, $<(v,v_{n+1}),y> = <v,x> + x_{n+1}v_{n+1}$ and noticing the multiplication by $v_{n+1}$ realizes a permutation of the set $\mathbb{F}_q^*$ we deduces the following induction formulas:
+
+\[
+x_{n+1} = (q-1) y_n
+\]
+\[
+y_{n+1} = x_n + (q-2) y_n.
+\]
+
+that is: 
+
+\[
+\begin{pmatrix}x_{n+1} \\ y_{n+1}\end{pmatrix} = M \begin{pmatrix}x_{n} \\ y_{n}\end{pmatrix}
+\]
+
+
+with
+
+\[
+M:=\begin{pmatrix}0 & q-1 \\1 & q-2\end{pmatrix}.
+\]
+
+Now we can diagonalize it, this leads to:
+
+\[
+\frac{1}{q}PMP=\begin{pmatrix}q-1 & 0 \\0 & -1\end{pmatrix}
+\]
+
+with:
+\[
+P:=\begin{pmatrix} 1&q-1\\1&-1 \end{pmatrix}.
+\]
+
+Now so as to conclude, we remark $x_1 = 0, y_1=1$.
+
+\[
+\begin{pmatrix}x_{n} \\ y_{n}\end{pmatrix} = \frac{1}{q}P\begin{pmatrix}(q-1)^{n-1} & 0 \\0 & (-1)^{n-1}\end{pmatrix} P \begin{pmatrix}0 \\ 1\end{pmatrix}
+\]
+\[
+\begin{pmatrix}x_{n} \\ y_{n}\end{pmatrix} = \frac{1}{q}\begin{pmatrix}(q-1)^n + (-1)^n(q-1) \\ (q-1)^n + (-1)^{n+1}\end{pmatrix}.
+\]
+
+We get: $a_0-b = y_n - x_n =(-1)^n$
+
+\hfill $\square$
+
 \end{document}
