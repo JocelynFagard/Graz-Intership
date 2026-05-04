@@ -19,7 +19,7 @@
 \maketitle
 
 \section{Context}
-Let $n,m \in \mathbb{N}^*$; let $q$ be a power of a prime integer and consider the ring
+Let $n,m \in \mathbb{N}^*$; let $q$ be a prime integer and consider the ring
 \[
 A := \mathbb{F}_q[X]/(X^m + 1)
 \]
@@ -37,7 +37,7 @@ S\!\left( k_0 \prod_{i=1}^n k_i^{x_i} \right).
 
 \section{Shifted keys}
 Let $k_0 \in A$, here we assume that for all $i \in \{0,\dots,n-1\}$ $k_{i+1}:= \sigma(k_i)$ where $\sigma$ is the cyclic shift  : $P \in \mathbb{F}_q[X]_{<m} \to X  P$ mod $(X^m-1)$.
-Given a polynomial $r$ and an non-negative integer $l$ we note $r_l$ the $(l+1)$-th coefficient of $r$. Let's start we a remark.
+Given a polynomial $r$ and an non-negative integer $l$ we note $r_l$ the $(l+1)$-th coefficient of $r$. Let's start with a remark.
 
 \textbf{Claim.} Assume that $m$ is even.
 Let $a,b \in A$. Then we have the following equality:
@@ -442,7 +442,7 @@ This proves that $\mathrm{DDT}(\delta, \Delta) = 1$ for $\Delta \neq 0$, and $0$
 
 \hfill $\square$
 
-\textbf{Consequences on SPRING}.
+\textbf{Another formula for SPRING}.
 
 Let us define
 \[
@@ -535,8 +535,7 @@ Let $(K,k_0) \sim (K',k'_0)$, then $F_{K,k_0} = F_{K',k'_0}$.
 Let's consider $c\in \{0,1\}^m$.Because of the equivalence of sets of keys, we have :
 
 \[
-Kc + k_0 = K'c + k'_0 + \epsilon (\frac{q-1}{2}, \frac{q-1}{2}, \cdots,
-\frac{q-1}{2}) \text{ where }\epsilon \in \{ 0, 1\}.
+Kc + k_0 = K'c + k'_0 + \epsilon (\frac{q-1}{2}, \frac{q-1}{2}, \cdots, \frac{q-1}{2}) $ where $\epsilon \in \{ 0, 1\}.
 \]
 
 \vspace{0.3cm}
@@ -643,6 +642,48 @@ is equidistributed over $\mathbb{Z}_{q-1}$.
 \textbf{Proof.} The proof is similar than the one for the first lemma. \hfill $\square$
 
 \vspace{0.3cm}
+
+\textbf{Theorem.}
+Let's consider an integer $n \geq 1$ and $q$ a prime number such that : $q-1 := 2^{\alpha}$.
+We  consider $v_1,\cdots, v_n \in (\mathbb{Z}_{q-1})^{\alpha n}$ such that each $v_j :=(v_{j,1},\cdots, v_{j,\alpha n)}$ has a support $I_j$ of $\alpha$ indices for which $ \{\textbf{v}_2(v_{j,i}) \mid i \in I_j \} = \{1,2,3,\cdots,\alpha-1\}$. In addition to this we assume:
+\[
+\forall i \neq j, I_i \cap I_j = \emptyset.
+\]
+Let's denote by $V \in \mathbb{Z}_{q-1}^{n \times n\alpha}$ the matrix with rows $(v_j)_j$. We have: 
+
+If $b:=(b_1,\cdots,b_{\alpha n}) \sim U(\{0,1\}^{n \alpha})$ then $V \cdot b \sim U(\mathbb{Z}_{q-1}^n)$.
+
+\vspace{0.3cm}
+
+\textbf{Proof.}
+Let's note $Y_i := \langle v_i, b\rangle $ the i-th coordinate of $V \cdot b$. Thanks to the formula of conditional probabilities, it would be sufficient to show that $Y_{l+1}$ given $Y_1,\cdots, Y_l$ is uniformly distributed over $\mathbb{Z}_{q-1}$ for all $l\in \{1,2,\cdots , n-1\}$.
+
+\vspace{0.3cm}
+
+Let's make a recursion. Assume $Y_1=y_1$ is fixed, then because of the previous Corollary, the set $(b_{i})_{i \notin I_1}$ is uniformly distributed because $(v_{1,i})_{i \in I_1}$ is a binary generator of $\mathbb{Z}_{q-1}$. And because of the fact $I_2 \cap  I_1 = \emptyset$, this implies $(b_{1,i})_{i \in I_2}$ are uniformly distributed and so $Y_2$ is also uniformly distributed knowing  $(v_{2,i})_{i \in I_2}$ is a binary generator.
+
+\vspace{0.3cm}
+
+For the recursion step, assume given $Y_1 = y_1,\cdots, Y_{l-1} = y_{l-1}$ fixed, the $(b_i)_{i \notin (I_1\cup I_2 \cdots \cup I_{l-1})}$ are uniformly distributed and so $Y_l$ is uniformly distributed. Then let's fix $Y_l = y_l$ then because $I_l \cap (I_1\cup I_2 \cdots \cup I_{l-1}) = \emptyset$, $(b_i)_{i \notin (I_1\cup I_2 \cdots \cup I_{l-1} \cup I_l)}$ is uniformly distributed and so in particular $I_{l+1} \cap (I_1\cup I_2 \cdots \cup I_{l}) = \emptyset$ leads to the fact that $Y_{l+1} \mid Y_1,\cdots, Y_l$ is uniform over $\mathbb{Z}_{q-1}$.
+
+\hfill $\square$
+
+\vspace{0.3cm}
+
+\textbf{Corollary SPRING.}
+In SPRING, if $m=\alpha n$ and if the key matrix  $K \in \mathbb{Z}_{q-1}^{n \times n \alpha}$ is chosen such that its rows $v_1,\cdots,v_n$ respect the 'two-valuation assumption' of the previous theorem. Then, noting:
+
+\[
+ G: b:=(b_1,\cdots,b_m) \in \{0,1\}^m \to g^{K \cdot b + k_0} \in (\mathbb{F}_q^*)^n.
+\]
+
+we have $G \cdot b \sim U((\mathbb{F}_q^*)^n)$.
+
+\vspace{0.3cm}
+
+\textbf{Proof.} \hfill $\square$
+
+\vspace{0.3cm}
 Now we are interested in looking at the second part of the SPRING where our vector $y:=g^{Kc+k_0}$ that we hope to be uniformly distributed over $(\mathbb{F}_q^*)^n$ will be multiplied by the matrix $V \in (\mathbb{F}_q^*)^{n \times n}$.
 
 \vspace{0.3cm}
@@ -704,8 +745,58 @@ Now so as to conclude, we remark $x_1 = 0, y_1=1$.
 \begin{pmatrix}x_{n} \\ y_{n}\end{pmatrix} = \frac{1}{q}\begin{pmatrix}(q-1)^n + (-1)^n(q-1) \\ (q-1)^n + (-1)^{n+1}\end{pmatrix}.
 \]
 
-We get: $a_0-b = y_n - x_n =(-1)^n$
+We get: $a_0-b = x_n - y_n =(-1)^n$
 
 \hfill $\square$
 
+\textbf{Lemma.} Let's consider $\phi$ be a primtive $n$-th root of unity.
+Let $j \in \{1,\cdots, n-1\}$, and let $\phi_j := (\phi^{ji})_{i \in \{0,\cdots,n-1\}}$, $id := (1,1,\cdots,1)$. Then:
+\[
+\langle id, \phi_j \rangle = 0.
+\]
+
+\vspace{0.3cm}
+
+\textbf{Proof.}
+This comes from the fact that for $j \in \{1,\cdots,n-1\}$, $\phi^j \neq 0$ and so:
+\[
+\sum_{i=0}^{n-1} \phi^{ji} = \frac{\phi^{jn} -1}{\phi^j - 1} = 0.
+\]
+
+\hfill $\square$
+
+\vspace{0.3 cm}
+
+\textbf{Hoping Lemma.}
+Let $n < q$, and let $H$ be a subspace of $\mathbb{F}_q^n$ that contains $id$. In addition to this assume that $v \in \mathbb{F}_q^n$ is, not orthogonal to the whole space $H$ as well as $\langle v, id\rangle = 0$. Then:
+
+\[
+\langle v, \cdot \rangle : (\mathbb{F}_q^*)^n \cap H \to \mathbb{F}_q
+\] 
+
+is almost equidistributed over $\mathbb{F}_q$.
+
+\vspace{0.3cm}
+
+\textbf{Proof.}
+First of all, we note $K_i:=\{x\in (\mathbb{F}_q^*)^n \cap H \mid \langle v, x\rangle\ = i\}$ for all $i \in \mathbb{F}_q$ and we remark by multiplying by a scalar that $\#K_i = \#K_j$ for $i,j \neq 0$. We denote this cardinal by $k_{\neq0}$. We also define $k_0:=\#K_0$. The goal is to show: $\mid k_0 - k_{\neq 0}\mid \leq 1$. We have already seen this result was true for $H:=\mathbb{F}_q^n$ that is $\text{dim}H = n$, as well as $v\in (\mathbb{F}_q^*)^n$. If $\text{dim}H = 1$, that is $H:= \mathbb{F}_q \cdot u$ for some vector $u$, then either $u \in (\mathbb{F}_q^*)^n$ in this case $k_0 = 0$ and $k_{\neq 0} = 1$. Or, if it is not the case, then $k_{\neq 0} = k_0= 0$.
+
+\vspace{0.3cm}
+
+For $i \in \mathbb{F}_q$, let $A_i:= \{x\in (\mathbb{F}_q^*)^n \cap H \mid \langle v, x\rangle\ = i\}$ and $a_i = \#A_i$. Because $id \in H$, for all $x \in H$,  $ \mathbb{F}_q \cdot id + x$ is included in $H$. And because $\langle v, id\rangle = 0$, $\langle v, \cdot\rangle$ is constant on $ \mathbb{F}_q \cdot id + x$ equal to $\langle v, x\rangle$.
+
+\vspace{0.3cm}
+
+Also for $i \in \mathbb{F}_q$, we define $M_i := \{x\in H \mid i \notin x \}$ the vectors in $H$ that does not have $i$ in its coordinates. For instance $M_0 = (\mathbb{F}_q^*)^n \cap H$. More generally given $I \subset \{1,\cdots,n\}$, we define $M_I:= \bigcap_{i \in I} M_i$ . Because $q < n$, $H= M_0 \cup M_1 \cup \cdots \cup M_{q-1}$. 
+
+\vspace{0.3 cm}
+Let $[x]:=x + \mathbb{F}_q  \cdot id \in H / (\mathbb{F}_q \cdot id)$  with $\langle v,x\rangle =: k$, let $I([x]) \subset \{1,\cdots,n\}$ be a biggest subset such that $x \in M_I$. Then the line $x + \mathbb{F}_q \cdot id$ will contribute $J([x]):=\#I([x])$ times to $a_k$. Because a non zero linear form is equidistributed over $\mathbb{F}_q$ we must have for all $k,l \in \mathbb{F}_q$:
+
+\[
+\sum_{[x], \langle v,x \rangle = k} J([x]) = \sum_{[x], \langle v,x \rangle = l} J([x])
+\]
+
+\vspace{0.3cm}
+
+\hfill $\square $
 \end{document}
